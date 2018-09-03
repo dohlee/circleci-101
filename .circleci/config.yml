@@ -10,8 +10,13 @@ jobs:
       - run: bash installer.sh -b -p $HOME/miniconda3
       - run: export PATH="$HOME/miniconda3/bin:$PATH"
       # Setup .condarc file.
-      - run: echo "channels:" > $HOME/.condarc
-      - run: echo "  - bioconda" >> $HOME/.condarc
-      - run: echo "  - conda-forge" >> $HOME/.condarc
-      - run: echo "  - defaults" >> $HOME/.condarc
-      - run: echo "always_yes: true" >> $HOME/.condarc
+      - run:
+          echo "channels:" > $HOME/.condarc
+      - run: 
+          echo "  - bioconda" >> $HOME/.condarc
+      - run:
+          echo "  - conda-forge" >> $HOME/.condarc
+      - run:
+          echo "  - defaults" >> $HOME/.condarc
+      - run:
+          echo "always_yes: true" >> $HOME/.condarc
