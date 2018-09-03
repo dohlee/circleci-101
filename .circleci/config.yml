@@ -9,6 +9,7 @@ jobs:
       - run: wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O installer.sh
       - run: bash installer.sh -b -p $HOME/miniconda3
       - run: export PATH="$HOME/miniconda3/bin:$PATH"
+      - run: ls $HOME/miniconda3/bin
       # Setup .condarc file.
       - run: |
           echo "channels:" > $HOME/.condarc;
@@ -16,5 +17,6 @@ jobs:
           echo "  - conda-forge" >> $HOME/.condarc;
           echo "  - defaults" >> $HOME/.condarc;
           echo "always_yes: true" >> $HOME/.condarc;
+          cat $HOME/.condarc;  # Show me!
       # Install tools for test.
       - run: conda install kallisto bwa fastqc
