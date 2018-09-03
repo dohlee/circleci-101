@@ -11,12 +11,10 @@ jobs:
       - run: export PATH="$HOME/miniconda3/bin:$PATH"
       # Setup .condarc file.
       - run: |
-          echo "channels:" > $HOME/.condarc
-      - run: |
-          echo "  - bioconda" >> $HOME/.condarc
-      - run: |
-          echo "  - conda-forge" >> $HOME/.condarc
-      - run: |
-          echo "  - defaults" >> $HOME/.condarc
-      - run: |
-          echo "always_yes: true" >> $HOME/.condarc
+          echo "channels:" > $HOME/.condarc;
+          echo "  - bioconda" >> $HOME/.condarc;
+          echo "  - conda-forge" >> $HOME/.condarc;
+          echo "  - defaults" >> $HOME/.condarc;
+          echo "always_yes: true" >> $HOME/.condarc;
+      # Install tools for test.
+      - run: conda install kallisto bwa fastqc
