@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  install_conda:
+  build:
     docker:
       - image: circleci/python:3.6.1
     
