@@ -10,6 +10,7 @@ jobs:
       - run: bash installer.sh -b -p $HOME/miniconda3
       - run: export PATH="$HOME/miniconda3/bin:$PATH"
       - run: ls $HOME/miniconda3/bin
+      - run: echo $PATH
       # Setup .condarc file.
       - run: |
           echo "channels:" > $HOME/.condarc;
