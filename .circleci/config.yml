@@ -6,16 +6,20 @@ jobs:
     
     steps:
       - checkout
+      # Install miniconda and setup environment variables.
       - run: |
           wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O installer.sh
           bash installer.sh -b -p $HOME/miniconda3
-          echo 'export PATH="$HOME/miniconda3:$PATH"' >> $BASH_ENV
+          echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> $BASH_ENV
           source $BASH_ENV
-          ls $HOME/miniconda3/bin
+          ls $HOME/miniconda3/bin  # Show me!
+      # Setup .condarc file.
+      - run: |
           echo "channels:" > $HOME/.condarc
           echo "  - bioconda" >> $HOME/.condarc
           echo "  - conda-forge" >> $HOME/.condarc
           echo "  - defaults" >> $HOME/.condarc
           echo "always_yes: true" >> $HOME/.condarc
           cat $HOME/.condarc
-          conda install kallisto bwa fastqc
+      # Install tools for test.
+      - run: conda install kallisto bwa fastqc
