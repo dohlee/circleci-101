@@ -6,5 +6,12 @@ jobs:
     
     steps:
       - checkout
-      - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O installer.sh
-      - bash installer.sh
+      - run: wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O installer.sh
+      - run: bash installer.sh -b -p $HOME/miniconda3
+      - run: export PATH="$HOME/miniconda3/bin:$PATH"
+      # Setup .condarc file.
+      - run: echo "channels:" > $HOME/.condarc
+      - run: echo "  - bioconda" >> $HOME/.condarc
+      - run: echo "  - conda-forge" >> $HOME/.condarc
+      - run: echo "  - defaults" >> $HOME/.condarc
+      - run: echo "always_yes: true" >> $HOME/.condarc
